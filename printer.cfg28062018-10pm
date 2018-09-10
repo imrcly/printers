@@ -1,0 +1,100 @@
+[stepper_a]
+step_pin: ar17
+dir_pin: ar16
+enable_pin: !ar48
+step_distance: .0125
+#endstop_pin: ^ar37
+endstop_pin: ^ar36
+homing_speed: 50
+arm_length: 180
+position_endstop: 331.428819 
+angle: 211.026416
+
+[stepper_b]
+step_pin: ar54
+dir_pin: ar47
+enable_pin: !ar55
+step_distance: .0125
+#endstop_pin: ^ar35
+endstop_pin: ^ar34
+position_endstop: 331.382509 
+angle: 330.048891
+
+[stepper_c]
+#angle: 90
+step_pin: ar57
+dir_pin: ar56
+enable_pin: !ar62
+step_distance: .0125
+#endstop_pin: ^ar33
+endstop_pin: ^ar32
+position_endstop: 331.424933
+angle: 90.000000
+
+
+[extruder]
+step_pin: ar23
+dir_pin: ar22
+enable_pin: !ar24
+step_distance: .0108
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+heater_pin: ar2
+sensor_type: 100k Honeywell thermistor 135-104LAG-J01
+sensor_pin: analog15
+control: pid
+pid_Kp: 22.875
+pid_Ki: 0.902
+pid_Kd: 144.973
+min_temp: 0
+max_temp: 238
+#pressure_advance: 0.0
+#pressure_advance_lookahead_time: 0.010
+
+
+[heater_bed]
+heater_pin: ar9
+sensor_type: NTC 100K MGB18-104F39050L32
+sensor_pin: analog11
+control: pid
+pid_Kp=39.351
+pid_Ki=0.323
+pid_Kd=1199.715
+min_temp: 0
+max_temp: 130
+
+
+[mcu]
+serial: /dev/ttyACM0
+pin_map: arduino
+baud: 250000
+restart_method:arduino
+
+[printer]
+kinematics: delta
+max_velocity: 300
+max_accel: 3000
+max_z_velocity: 150
+#minimum_z_position: 0
+delta_radius: 99.554984
+
+[delta_calibrate]
+radius: 75
+speed: 50
+horizontal_move_z: 5
+manual_probe: true
+
+#[bed_tilt]
+#x_adjust: 0
+#y_adjust: 0
+#speed: 50
+#horizontal_move_z: 5
+#manual_probe: true
+
+
+# "RepRapDiscount 128x64 Full Graphic Smart Controller" type displays
+[display]
+lcd_type: st7920
+cs_pin: ar19
+sclk_pin: ar18
+sid_pin: ar42
