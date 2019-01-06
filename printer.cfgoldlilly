@@ -1,0 +1,194 @@
+# This file contains common pin mappings for RUMBA boards.  To use
+# this config, the firmware should be compiled for the AVR atmega2560.
+
+# See the example.cfg file for a description of available parameters.
+
+[stepper_x]
+step_pin: ar17
+dir_pin: !ar16
+enable_pin: !ar48
+step_distance: 0.00634509332
+endstop_pin: ^ar37
+#endstop_pin: ^ar36
+position_endstop: 0
+position_max: 300
+homing_speed: 50
+
+[stepper_y]
+step_pin: ar54
+dir_pin: ar47
+enable_pin: !ar55
+step_distance: 0.00631368197
+endstop_pin: ^ar35
+#endstop_pin: ^ar34
+position_endstop: 0
+position_max: 300
+homing_speed: 50
+
+[stepper_z]
+step_pin: ar57
+dir_pin: ar56
+enable_pin: !ar62
+step_distance: 0.00124317954
+endstop_pin: ^ar33
+#endstop_pin: ^ar32
+position_endstop: 0
+position_max: 300
+
+[extruder]
+step_pin: ar23
+dir_pin: ar22
+enable_pin: !ar24
+step_distance: 0.0013
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+heater_pin: ar3
+sensor_type: PT100 INA826
+sensor_pin: analog9
+control: pid
+pid_Kp:26.571
+pid_Ki:2.013
+pid_Kd:87.686 
+min_temp: 0
+max_temp: 395
+#pressure_advance: 0.0
+#pressure_advance_lookahead_time: 0.010
+
+[extruder1]
+step_pin: ar26
+dir_pin: ar25
+enable_pin: !ar27
+heater_pin: ar6
+step_distance: .002
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+sensor_type: ATC Semitec 104GT-2
+sensor_pin: analog14
+control: watermark
+min_temp: 0
+max_temp: 100
+max_power: 1
+
+[verify_heater extruder1]
+heating_gain: 1
+check_gain_time: 120000
+hysteresis: 5
+max_error: 600
+
+[heater_bed]
+heater_pin: ar9
+sensor_type: EPCOS 100K B57560G104F
+sensor_pin: analog11
+control: pid
+pid_Kp: 49.732
+pid_Ki: 1.928
+pid_Kd: 320.769
+max_power: 0.5
+min_temp: 0
+max_temp: 160
+
+[fan]
+pin: ar7
+
+#[heater_fan fan1]
+#pin: ar8
+
+[mcu]
+serial: /dev/ttyACM0
+pin_map: arduino
+
+[printer]
+kinematics: cartesian
+max_velocity: 150
+max_accel: 1000
+max_z_velocity: 5
+max_z_accel: 100
+
+[virtual_sdcard]
+path: ~/.octoprint/uploads/
+
+[bed_mesh]
+#speed: 50
+#   The speed (in mm/s) of non-probing moves during the
+#   calibration. The default is 50.
+#horizontal_move_z: 5
+#   The height (in mm) that the head should be commanded to move to
+#   just prior to starting a probe operation. The default is 5.
+#samples: 1
+#   The number of times to probe each point.  The probed z-values
+#   will be averaged.  The default is to probe 1 time.
+#sample_retract_dist: 2.0
+#   The distance (in mm) to retract between each sample if
+#   sampling more than once.  Default is 2mm.
+min_point: 50,50
+#   An X,Y point defining the minimum coordinate to probe on
+#   the bed. Note that this refers to the nozzle position,
+#   and take care that you do not define a point that will move
+#   the probe off of the bed. This parameter must be provided.
+max_point: 250,250
+#   An X,Y point defining the maximum coordinate to probe on
+#   the bed. Follow the same precautions as listed in min_point.
+#   Also note that this does not necessarily define the last point
+#   probed, only the maximum coordinate. This parameter must be provided.
+#probe_count: 3,3
+#   A comma separated pair of integer values (X,Y) defining the number
+#   of points to probe along each axis. A single value is also valid,
+#   in which case that value will be for both axes. Default is 3,3
+#   which probes a 3x3 grid.
+#fade_start: 1.0
+#   The z-axis position in which to start phasing z-adjustment out.
+#   Default is 1.0.
+#fade_end: 10.0
+#   The z-axis position in which phase out is complete. If this
+#   value is less than or equal to fade_start then phasing out
+#   is disabled. Default is 10.0.
+#split_delta_z: .025
+#   The amount of Z difference (in mm) along a move that will
+#   trigger a split. Default is .025.
+#move_check_distance: 5.0
+#   The distance (in mm) along a move to check for split_delta_z.
+#   This is also the minimum length that a move can be split. Default
+#   is 5.0.
+#mesh_pps: 2,2
+#   A comma separated pair of integers (X,Y) defining the number of
+#   points per segment to interpolate in the mesh along each axis. A
+#   "segment" can be defined as the space between each probed
+#   point. The user may enter a single value which will be applied
+#   to both axes.  Default is 2,2.
+#algorithm: lagrange
+#   The interpolation algorithm to use. May be either "lagrange"
+#   or "bicubic". This option will not affect 3x3 grids, which
+#   are forced to use lagrange sampling.  Default is lagrange.
+#bicubic_tension: .2
+#   When using the bicubic algorithm the tension parameter above
+#   may be applied to change the amount of slope interpolated.
+#   Larger numbers will increase the amount of slope, which
+#   results in more curvature in the mesh. Default is .2.
+
+#"RepRapDiscount 128x64 Full Graphic Smart Controller" type displays
+[display]
+lcd_type: st7920
+cs_pin: ar19
+sclk_pin: ar18
+sid_pin: ar42
+
+#*# <---------------------- SAVE_CONFIG ---------------------->
+#*# DO NOT EDIT THIS BLOCK OR BELOW. The contents are auto-generated.
+#*#
+#*# [bed_mesh default]
+#*# points =
+#*# 	  0.900062, 1.399820, 1.899578
+#*# 	  1.100214, 1.500518, 1.899578
+#*# 	  1.100214, 1.399820, 1.899578
+#*# x_count = 3
+#*# y_count = 3
+#*# min_x = 50.0
+#*# max_x = 250.0
+#*# min_y = 50.0
+#*# max_y = 250.0
+#*# x_offset = 0.0
+#*# y_offset = 0.0
+#*# mesh_x_pps = 2
+#*# mesh_y_pps = 2
+#*# algo = lagrange
+#*# tension = 0.2
